@@ -1,6 +1,14 @@
-# shop_app
+# Shop App
 
 A new Flutter project.
+
+# Screenshots
+<img width="205" alt="Screenshot 08-14-2023 13 05 42" src="https://github.com/Kumardk8780/shop_app/assets/54668564/43337bc7-91c6-4bda-a894-417990acff20">
+
+<img width="205" alt="Screenshot 08-14-2023 13 06 06" src="https://github.com/Kumardk8780/shop_app/assets/54668564/7f87b795-91e4-4447-9433-ea17b7697ca3">
+<img width="205" alt="Screenshot 08-14-2023 13 06 25" src="https://github.com/Kumardk8780/shop_app/assets/54668564/ed701dc0-60a3-4791-8db6-607395284ee2">
+
+
 
 ## Getting Started
 
