@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../cart_provider.dart';
 
 class ProductDetailPage extends StatefulWidget {
   final Map<String, Object> product;
@@ -14,6 +17,30 @@ class ProductDetailPage extends StatefulWidget {
 
 class _ProductDetailPageState extends State<ProductDetailPage> {
   int selectedSize = 0;
+
+  void onTap() {
+    if (selectedSize != 0) {
+      Provider.of<CartProvider>(context, listen: false).addProduct({
+        'id': widget.product['id'],
+        'title': widget.product['title'],
+        'price': widget.product['price'],
+        'imageUrl': widget.product['imageUrl'],
+        'company': widget.product['company'],
+        'size': selectedSize,
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Item added successfully'),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please select a size'),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +105,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: ElevatedButton.icon(
-                    icon: const Icon(Icons.shopping_cart_outlined),
+                    icon: const Icon(
+                      Icons.shopping_cart_outlined,
+                      color: Colors.black,
+                    ),
                     label: const Text(
                       "Add to Cart",
                       style: TextStyle(
@@ -86,7 +116,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         fontSize: 18,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: onTap,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       minimumSize: const Size(double.infinity, 50),
